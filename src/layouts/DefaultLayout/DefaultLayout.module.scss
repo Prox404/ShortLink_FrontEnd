@@ -4,58 +4,42 @@
 
 .sidebar {
     margin: 0;
-    padding: 0;
-    width: 200px;
-    background-color: #f1f1f1;
+    padding: 10px 14px;
+    width: var(--default-layout-sidebar-width);
+    background-color: var(--default-layout-sidebar-background-color);
     position: fixed;
     height: 100%;
-    overflow: auto;
-
-    a {
-        display: block;
-        color: black;
-        padding: 16px;
-        text-decoration: none;
-    }
-
-    a.active {
-        background-color: #04AA6D;
-        color: white;
-    }
-
-    a:hover:not(.active) {
-        background-color: #555;
-        color: white;
-    }
+    overflow: hidden;
+    transition: all 0.3s ease;
 }
 
 .content {
-    margin-left: 200px;
+    margin-left: var(--default-layout-sidebar-width);
     padding: 1px 16px;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 1023px) {
+    .sidebar {
+        width: var(--default-layout-sidebar-close-width);
+        height: 100%;
+        position: fixed;
+        bottom: 0;
+    }
+
+    .content {
+        margin-left: var(--default-layout-sidebar-close-width);
+    }
+}
+
+@media screen and (max-width: 767px) {
     .sidebar {
         width: 100%;
         height: auto;
         position: fixed;
         bottom: 0;
-
-        a {
-            float: left;
-        }
     }
 
     .content {
         margin-left: 0;
-    }
-}
-
-@media screen and (max-width: 400px) {
-    .sidebar {
-        a {
-            text-align: center;
-            float: none;
-        }
     }
 }
