@@ -7,6 +7,12 @@
     align-items: center;
     margin-top: 10px;
     transition: all 0.3s ease;
+    cursor: pointer;
+    border-radius: 6px;
+
+    &:hover{
+        background-color: var(--default-layout-sidebar-background-color-hover);
+    }
 }
 
 .icon-wrapper{
@@ -21,14 +27,23 @@
 
 .title-wrapper{
     font-size: 17px;
-    font-weight: 500;
+    font-weight: 700;
     white-space: nowrap;
 }
 
 @media screen and (max-width: 1023px) {
+    .title-wrapper {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 767px) {
     .wrapper {
-        margin-top: 0;
         width: auto;
+    }
+
+    .icon-wrapper {
+        margin-top: 0;
     }
 
     .title-wrapper {
