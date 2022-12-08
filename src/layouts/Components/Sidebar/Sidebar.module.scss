@@ -22,6 +22,10 @@
     display:block;
 }
 
+.profile-wrapper{
+    border-top: 1px solid var(--colorLineSecondary);
+}
+
 @media screen and (max-width: 1023px) {
     .logo {
         height: 50px;

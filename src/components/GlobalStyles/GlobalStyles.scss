@@ -58,8 +58,6 @@
     --default-layout-header-height: 60px;
     --default-layout-sidebar-width: 222px;
     --default-layout-sidebar-close-width: 88px;
-    --default-layout-sidebar-background-color: #FAF7F5;
-    --default-layout-sidebar-background-color-hover: #EFE6E3;
     
 }
 
@@ -99,6 +97,8 @@
     --colorSDTertiary: rgba(0, 0, 0, 0.2);
     --popperBackground: rgb(255, 255, 255);
     --scrollbar: rgba(22, 24, 35, 0.06);
+    --default-layout-sidebar-background-color: #FAF7F5;
+    --default-layout-sidebar-background-color-hover: #EFE6E3;
 }
 
 [data-theme='dark']:root {
