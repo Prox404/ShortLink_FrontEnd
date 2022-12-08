@@ -16,7 +16,7 @@ const content = [
     },
     {
         title: "Link",
-        to: "/news",
+        to: "/links",
         icon: <FaLink />,
     },
     {
