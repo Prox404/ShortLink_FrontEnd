@@ -1,5 +1,7 @@
 import { useState } from "react";
 import classNames from "classnames/bind";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 import styles from "./Link.module.scss";
 import * as LinkServices from "~/services/LinkServices";
@@ -29,11 +31,20 @@ function Link() {
         console.log(res);
     }
 
+
+    AOS.init();
+
     return (<>
         <div className={cx('wrapper')}>
             <div className="row">
                 <div className="col-12 col-xl-6">
-                    <div className="card">
+                    <div className="card"
+                        data-aos="fade-up"
+                        data-aos-duration="500"
+                        data-aos-easing="ease-in-out"
+                        data-aos-once="false"
+                        data-aos-anchor-placement="top-center"
+                    >
                         <h1 className={cx('title')}>Rút gọn liên kết</h1>
                         <div className="form">
                             <div className="form-group">
