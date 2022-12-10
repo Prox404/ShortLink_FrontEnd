@@ -2100,7 +2100,7 @@ h6 {
         border-color: var(--colorPrimary);
         outline: 0;
         box-shadow: 0 0 0 0.25rem rgba(125, 253, 13, 0.25);
-    }    
+    }
 }
 
 .form-check-input[type="checkbox"] {
@@ -2127,7 +2127,7 @@ h6 {
         background-color: var(--colorPrimary);
         border-color: var(--colorPrimary);
         background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/%3e%3c/svg%3e");
-    }    
+    }
 }
 
 .form-check-input:checked[type="radio"] {
@@ -2137,6 +2137,35 @@ h6 {
 .form-footer {
     padding-top: 20px;
     text-align: right;
+}
+
+.form-switch {
+    padding-left: 2.5em;
+}
+
+.form-switch .form-check-input {
+    width: 2em;
+    margin-left: -2.5em;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba%280, 0, 0, 0.25%29'/%3e%3c/svg%3e");
+    background-position: left center;
+    border-radius: 2em;
+    transition: background-position 0.15s ease-in-out;
+
+    &:focus {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%2386b7fe'/%3e%3c/svg%3e");
+    }
+
+    &:checked {
+        background-position: right center;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+    }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .form-switch .form-check-input {
+        transition: none;
+    }
 }
 
 .btn {
