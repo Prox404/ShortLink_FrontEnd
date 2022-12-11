@@ -12,14 +12,7 @@ export const get = async (path, options = {}) => {
 export const post = async (path, data, options = {}) => {
     console.log("path: ", path);
     console.log("data: ", data);
-    const response = await httpRequest.post(path, data, {
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Access-Control-Allow-Origin" : "*",
-            "Access-Control-Allow-Methods" : "GET,PUT,POST,DELETE,PATCH,OPTIONS",
-            "Access-Control-Allow-Headers" : "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers"
-        }
-    });
+    const response = await httpRequest.post(path, data);
     return response.data;
 };
 
