@@ -1,6 +1,12 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import classNames from "classnames/bind";
+
+import Images from "~/assets/images";
+import styles from "./Carousel.scss";
+
+let cx = classNames.bind(styles);
 
 function Carousel({ ...props }) {
     var settings = {
@@ -15,24 +21,30 @@ function Carousel({ ...props }) {
         slidesToScroll: 1
     };
     return (
-        <Slider {...settings}>
-            <div>
-                <h3>1</h3>
+        <Slider className={cx('wrapper')} {...settings}>
+            <div className="banner-wrapper">
+                <div className={cx('banner')}>
+                    <img src={Images.ppt1} alt="patten 1" />
+                </div>
+                <h3 className="text-center">
+                    Free Shortener Link
+                </h3>
             </div>
-            <div>
-                <h3>2</h3>
+            <div className="banner-wrapper">
+                <div className={cx('banner')}>
+                    <img src={Images.ppt2} alt="patten 1" />
+                </div>
+                <h3 className="text-center">
+                    Quick & Secure Shortener Link
+                </h3>
             </div>
-            <div>
-                <h3>3</h3>
-            </div>
-            <div>
-                <h3>4</h3>
-            </div>
-            <div>
-                <h3>5</h3>
-            </div>
-            <div>
-                <h3>6</h3>
+            <div className="banner-wrapper">
+                <div className={cx('banner')}>
+                    <img src={Images.ppt3} alt="patten 1" />
+                </div>
+                <h3 className="text-center">
+                    No ADS
+                </h3>
             </div>
         </Slider>
     );
