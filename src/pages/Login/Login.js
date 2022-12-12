@@ -1,14 +1,17 @@
 import classNames from "classnames/bind";
-import {useState} from 'react';
+import { useState } from 'react';
 import { toast } from 'react-toastify';
 
-import  * as UserServices from "~/services/UserServices";
+import IsLoginMiddleware from '~/middlewares/IsLoginMiddleware';
+import * as UserServices from "~/services/UserServices";
 import Carousel from "~/components/Carousel";
 import styles from "./Login.module.scss";
 
 const cx = classNames.bind(styles);
 
 function Login() {
+
+    IsLoginMiddleware();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -28,16 +31,22 @@ function Login() {
             localStorage.setItem('token', res.token);
             localStorage.setItem('user', JSON.stringify(res.data));
             toast.success('Login successfully');
-            // setTimeout(() => {
-            //     window.location.href = '/';
-            // }, 3000)
+            setTimeout(() => {
+                window.location.href = '/';
+            }, 3000)
         }
-        return ;
+        return;
     }
 
     return (<div className={cx('wrapper')}>
         <div className="row">
-            <div className={`col-12 col-lg-6 ${cx('left-container')}`}>
+            <div className={`col-12 col-lg-6 ${cx('left-container')}`}
+                data-aos="fade-right"
+                data-aos-duration="500"
+                data-aos-easing="ease-in-out"
+                data-aos-once="false"
+                data-aos-anchor-placement="top-center"
+            >
                 <img className={cx('logo')} src="https://i.ibb.co/kMkJydd/Prox-logo.png" alt="logo" />
                 <h1 className="mt-5">Welcome Back</h1>
                 <p>Please login to your account.</p>

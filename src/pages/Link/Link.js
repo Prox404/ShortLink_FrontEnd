@@ -1,14 +1,16 @@
 import { useState } from "react";
 import classNames from "classnames/bind";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import { toast } from "react-toastify";
 
 import styles from "./Link.module.scss";
 import * as LinkServices from "~/services/LinkServices";
+import AuthMiddleware from "~/middlewares/AuthMiddleware";
 
 const cx = classNames.bind(styles);
 
 function Link() {
+
+    AuthMiddleware();
 
     console.log("re-render");
 
@@ -28,11 +30,13 @@ function Link() {
         params.append('short_link', customLink);
         params.append('password', password);
         const res = await LinkServices.store(params);
-        console.log(res);
+        if(res){
+            toast.success("Link created successfully");
+            setLink("");
+            setPassword("");
+            setIsCustomLink(false);
+        }
     }
-
-
-    AOS.init();
 
     return (<>
         <div className={cx('wrapper')}>
