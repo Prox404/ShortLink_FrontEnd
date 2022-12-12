@@ -28,7 +28,7 @@ export const del = async (path, options = {}) => {
 
 httpRequest.interceptors.request.use(function (config) {
     const token =
-        "Bearer " + JSON.parse(localStorage.getItem("token"))?.token;
+        "Bearer " + localStorage.getItem("token") ?? "";
     if (token) {
         config.headers.Authorization = token;
     }
