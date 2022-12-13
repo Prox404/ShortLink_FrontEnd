@@ -36,10 +36,12 @@
         width: 100%;
         height: auto;
         position: fixed;
+        z-index: 999;
         bottom: 0;
     }
 
     .content {
         margin-left: 0;
+        margin-bottom:calc(var(--default-layout-header-height) + 2*10px);
     }
 }
