@@ -1,0 +1,40 @@
+@font-face {
+    font-family: 'SofiaPro';
+    src: url(../../assets/fonts/SofiaProMedium.ttf) format('truetype');
+}
+
+.wrapper{
+    --min-height: 100vh;
+    padding: 20px;
+    min-height: var(--min-height);
+    position: relative;
+
+    background: url(../../assets/images/bglight.png) center center / cover no-repeat transparent;
+}
+
+.get-link-container{
+    position: absolute !important;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 600px;
+    width: 90%;
+    min-width: 370px;
+    max-height: max-content;
+}
+
+.main-title{
+    font-family: SofiaPro;
+    font-size: 50px;
+    font-weight: 700;
+    color: var(--colorTextPrimary);
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.sub-title{
+    font-size: 18px;
+    color: var(--colorTextSecondary);
+    text-align: center;
+    margin-bottom: 10px;
+}

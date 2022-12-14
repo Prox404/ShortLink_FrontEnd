@@ -1,9 +1,15 @@
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function AuthMiddleware() {
-    const token = localStorage.getItem('token');
-    if (!token) {
-        window.location.href = '/login';
-    }
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            navigate('/login');
+        }
+    }, [navigate]);
 }
 
 export default AuthMiddleware;

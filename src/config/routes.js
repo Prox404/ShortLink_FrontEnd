@@ -1,7 +1,8 @@
 const routes = {
     home: '/',
     links: '/links',
-    login: '/login'
+    login: '/login',
+    getLink: '/:id'
 };
 
 export default routes;
