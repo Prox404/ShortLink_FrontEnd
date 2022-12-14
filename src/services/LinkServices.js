@@ -21,3 +21,22 @@ export const getUserLink = async () => {
         return undefined;
     }
 }
+
+export const getLink = async (shortLink) => {
+    try {
+        const res = await request.get(`/links/show/${shortLink}`);
+        return res;
+    } catch (error) {
+        return undefined;
+    }
+}
+
+export const getLinkHasPassword = async (id, params) => {
+    try {
+        const res = await request.post(`/links/show/${id}`, params);
+        return res;
+    } catch (error) {
+        toast.error(error.response.data.error ?? 'Failed to get link');
+        return undefined;
+    }
+}
