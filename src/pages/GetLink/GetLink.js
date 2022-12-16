@@ -58,7 +58,11 @@ function GetLink() {
                             <center>
                                 <a href={links.link} className="btn btn-primary">Đến trang đích</a>
                                 <br />
-                                <button className="btn btn-blue mt-3" onClick={toggle}>Quét Mã QR</button>
+                                <button className="btn btn-danger mt-3" onClick={toggle}>Quét Mã QR</button>
+                                <br/>
+                                <a href={`https://www.facebook.com/sharer/sharer.php?u=${links.link}`} className="btn btn-blue mt-3">Chia sẻ</a>
+                                <br/>
+                                <Link to={`/links`} className="btn btn-warning mt-3">Rút gọn liên kết mới</Link>
                                 <Modal
                                     isShowing={isShowing}
                                     hide={toggle}

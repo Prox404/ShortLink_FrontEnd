@@ -38,6 +38,14 @@ function CreateLinkForm() {
         }
     }
 
+    const handleCopy = (shortLink) => {
+        navigator.clipboard.writeText("https://pr0x.me/" + shortLink).then(function () {
+            toast.success("Copied to clipboard");
+            return;
+        });
+        
+    }
+
     return (
         <>
             <div className="card"
@@ -87,13 +95,13 @@ function CreateLinkForm() {
                             <div key={index} className="card mt-4">
                                 <h3 className="mb-3">Thành công !</h3>
                                 <div className="input-group">
-                                    <span className="input-group-text form-control" >https://example.com/{link.short_link}</span>
-                                    <button className="btn btn-primary">
+                                    <span className="input-group-text form-control" >https://pr0x.me/{link.short_link}</span>
+                                    <button className="btn btn-primary" onClick={() => handleCopy(link.short_link)}>
                                         Sao chép
                                     </button>
-                                    <button className="btn btn-warning">
-                                        Chia sẻ
-                                    </button>
+                                    <a href={`https://www.facebook.com/sharer/sharer.php?u=pr0x.me/${link.link}`} target="_blank" rel="noopener noreferrer" className="btn btn-warning">
+                                    Chia sẻ
+                                    </a>
                                 </div>
                             </div>
                         )
