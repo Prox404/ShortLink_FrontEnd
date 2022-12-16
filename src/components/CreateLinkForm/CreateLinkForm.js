@@ -95,7 +95,7 @@ function CreateLinkForm() {
                             <div key={index} className="card mt-4">
                                 <h3 className="mb-3">Thành công !</h3>
                                 <div className="input-group">
-                                    <span className="input-group-text form-control" >https://example.com/{link.short_link}</span>
+                                    <span className="input-group-text form-control" >https://pr0x.me/{link.short_link}</span>
                                     <button className="btn btn-primary" onClick={() => handleCopy(link.short_link)}>
                                         Sao chép
                                     </button>
