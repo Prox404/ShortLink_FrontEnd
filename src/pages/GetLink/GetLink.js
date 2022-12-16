@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import * as LinkServices from "~/services/LinkServices";
+import useModal from "~/hooks/useModal";
+import Modal from "~/components/Modal/Modal";
 import styles from "./GetLink.module.scss";
 
 const cx = classNames.bind(styles);
@@ -31,13 +33,14 @@ function GetLink() {
     const handleSubmit = async () => {
         const params = new URLSearchParams();
         params.append('password', password);
-        const res = await LinkServices.getLinkHasPassword(id ,params);
+        const res = await LinkServices.getLinkHasPassword(id, params);
         if (res) {
             setLinks(res.data);
         }
     }
 
-    console.log(links.password === 'false')
+    const { isShowing, toggle } = useModal();
+
 
     return (<div className={cx('wrapper')}>
         <div className={` card ${cx('get-link-container')}`}>
@@ -54,6 +57,17 @@ function GetLink() {
                             </p>
                             <center>
                                 <a href={links.link} className="btn btn-primary">Đến trang đích</a>
+                                <br />
+                                <button className="btn btn-blue mt-3" onClick={toggle}>Quét Mã QR</button>
+                                <Modal
+                                    isShowing={isShowing}
+                                    hide={toggle}
+                                >
+                                    <center>
+                                        <img src={`https://api.qrserver.com/v1/create-qr-code/?data=${links.link}&size=150x150`} alt="QRCode" />
+                                    <p className="mt-3">Mã QR siêu cấp vjp pro</p>
+                                    </center>
+                                </Modal>
                             </center>
                         </>) : (
                             <>
@@ -68,6 +82,7 @@ function GetLink() {
                                     <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="form-control input-sm mb-3" placeholder="Mật khẩu" />
                                     <button onClick={handleSubmit} className="btn btn-primary">Tiếp tục</button>
                                 </center>
+
                             </>
                         )
                     }
