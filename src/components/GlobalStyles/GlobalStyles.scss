@@ -135,6 +135,7 @@
     --colorSDTertiary: rgba(0, 0, 0, 0.5);
     --popperBackground: rgb(37, 37, 37);
     --scrollbar: rgba(255, 255, 255, 0.08);
+    --default-layout-sidebar-background-color: rgba(37, 37, 37, 1);
 }
 
 * {
@@ -2201,9 +2202,11 @@ h6 {
 }
 
 .btn-primary {
+    color: #000 !important;
     background-color: var(--colorPrimary);
     border-color: var(--colorPrimary);
 }
+
 
 .btn-success {
     color: #fff;

@@ -24,11 +24,37 @@
 
 .profile-wrapper{
     border-top: 1px solid var(--colorLineSecondary);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px 0 0 0;
+}
+
+.profile-img{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--colorLineSecondary);
+}
+
+.profile-name{
+    font-size: 17px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.menu{
+    z-index: 99999;
 }
 
 @media screen and (max-width: 1023px) {
     .logo {
         height: 50px;
+    }
+
+    .profile-name{
+        display: none;
     }
 }
 
