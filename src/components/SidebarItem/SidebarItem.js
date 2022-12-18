@@ -9,7 +9,8 @@ function SidebarItem(
         icon,
         className, 
         title,
-        to, 
+        to,
+        onClick, 
         active = false,
         ...props
     }
@@ -20,7 +21,7 @@ function SidebarItem(
             active
         });
     return ( <>
-        <Link className={cx('wrapper', classes)} to={to}>
+        <Link className={cx('wrapper', classes)} to={to} onClick={onClick}>
             <div className={cx('icon-wrapper')}>
                 {icon}
             </div>
