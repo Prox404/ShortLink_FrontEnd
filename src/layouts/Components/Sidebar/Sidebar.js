@@ -1,4 +1,6 @@
 import classNames from "classnames/bind";
+import { useNavigate } from 'react-router-dom';
+
 import { RiDashboardFill } from "react-icons/ri";
 import { FaLink } from "react-icons/fa";
 import { MdInfo } from "react-icons/md";
@@ -32,7 +34,12 @@ const content = [
 ]
 
 function Sidebar() {
-
+    const navigate = useNavigate();
+    const logout = () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        navigate('/login');
+    }
     return <>
         <div className={cx('wrapper')}>
             <div className={cx('logo-wrapper')}>
@@ -50,7 +57,7 @@ function Sidebar() {
             <div className={cx('profile-wrapper')}>
                 <SidebarItem
                     title="Log out"
-                    to="/logout"
+                    onClick={logout}
                     icon={<MdInfo />}
                 />
             </div>
