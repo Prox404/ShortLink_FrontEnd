@@ -136,6 +136,7 @@
     --popperBackground: rgb(37, 37, 37);
     --scrollbar: rgba(255, 255, 255, 0.08);
     --default-layout-sidebar-background-color: rgba(37, 37, 37, 1);
+    --default-layout-sidebar-background-color-hover: rgba(46, 46, 46, 1);
 }
 
 * {
@@ -2352,6 +2353,7 @@ h6 {
 }
 
 .table thead th {
+    color: var(--black);
     background-color: var(--primary);
 }
 
