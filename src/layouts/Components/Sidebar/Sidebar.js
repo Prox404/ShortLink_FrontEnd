@@ -75,7 +75,9 @@ function Sidebar() {
 
             <Menu className={cx('menu')} items={currentUser ? userMenu : MENU_ITEMS}>
                 {currentUser && (<div className={cx('profile-wrapper')}>
-                    <img className={cx('profile-img')} src={currentUser.avatar || "https://i.ibb.co/176z8y8/Prox-logo-white.png"} alt="profile" />
+                    <div className={cx('profile-image-wrapper')}>
+                        <img className={cx('profile-img')} src={currentUser.avatar || "https://i.ibb.co/176z8y8/Prox-logo-white.png"} alt="profile" />
+                    </div>
                     <div className={cx('profile-info')}>
                         <span className={cx('profile-name')}>{currentUser.username || "Ehee"}</span>
                     </div>
