@@ -2408,3 +2408,9 @@ tr {
     white-space: wrap;
     text-overflow: ellipsis;
 }
+
+.a-link {
+    color: var(--colorPrimary) !important;
+    font-weight: 600;
+    text-decoration: none;
+}

@@ -12,3 +12,14 @@ export const login = async (params) => {
         return undefined;
     }
 }
+
+export const register = async (params) => {
+    try {
+        const res = await request.post(`/users/signup`, params);
+        return res;
+    } catch (error) {
+        console.log(error);
+        toast.error('Invalid information');
+        return undefined;
+    }
+}
