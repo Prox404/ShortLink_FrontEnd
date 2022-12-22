@@ -63,7 +63,7 @@ function Sidebar() {
     return <>
         <div className={cx('wrapper')}>
             <div className={cx('logo-wrapper')}>
-                <img className={cx('logo')} src="https://i.ibb.co/kMkJydd/Prox-logo.png" alt="logo" />
+                <img className={cx('logo')} src="https://i.ibb.co/176z8y8/Prox-logo-white.png" alt="logo" />
             </div>
             <div className={cx('sidebar-item-wrapper')}>
                 {

@@ -17,7 +17,7 @@ export const getUserLink = async () => {
         const res = await request.get(`/links/get`);
         return res;
     } catch (error) {
-        toast.error(error.response.data.error ?? 'Failed to get user link');
+        toast.info(error.response.data.error ?? 'Session expired, please try login again !');
         return undefined;
     }
 }
@@ -37,6 +37,16 @@ export const getLinkHasPassword = async (id, params) => {
         return res;
     } catch (error) {
         toast.error(error.response.data.error ?? 'Failed to get link');
+        return undefined;
+    }
+}
+
+export const overview = async () => {
+    try {
+        const res = await request.get(`/links/overview`);
+        return res;
+    } catch (error) {
+        toast.error(error.response.data.error ?? 'Failed to get overview');
         return undefined;
     }
 }

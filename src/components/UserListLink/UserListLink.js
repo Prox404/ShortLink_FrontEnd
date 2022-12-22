@@ -50,7 +50,7 @@ function UserListLink() {
     }
 
     return <>
-        <div className="card ps-0 pe-0 pb-0 responsive-card">
+        <div className="card ps-0 pe-0 pb-0 responsive-card fade-up">
             <h1 className="mb-4 ms-4">Danh sách liên kết</h1>
             <table className="table">
                 <thead>

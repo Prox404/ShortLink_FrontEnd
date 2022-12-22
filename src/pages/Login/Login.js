@@ -51,11 +51,11 @@ function Login() {
                 <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
                 <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="form-control" id="exampleInputPassword1" />
             </div>
-            <p>If you don't have an account, 
-            <Link to="/register" className="a-link">
-                Register
-            </Link>
-        </p>
+            <p>If you don't have an account,
+                <Link to="/register" className="a-link">
+                    Register
+                </Link>
+            </p>
             <button type="submit" onClick={handleSubmit} className="btn btn-primary mt-3">Login</button>
 
         </>

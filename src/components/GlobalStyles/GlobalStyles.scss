@@ -2414,3 +2414,72 @@ tr {
     font-weight: 600;
     text-decoration: none;
 }
+
+@keyframes fadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-up {
+    animation: fadeUp 0.5s ease-in-out;
+}
+
+.fade-down {
+    animation: fadeDown 0.5s ease-in-out;
+}
+
+.fade-left {
+    animation: fadeLeft 0.5s ease-in-out;
+}
+
+.fade-right {
+    animation: fadeRight 0.5s ease-in-out;
+}
+
+@keyframes fadeDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes fadeLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    80% {
+        opacity: 0.8;
+        transform: translateX(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeRight {
+    0% {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    80% {
+        opacity: 0.8;
+        transform: translateX(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

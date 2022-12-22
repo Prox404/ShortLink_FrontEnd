@@ -48,13 +48,7 @@ function CreateLinkForm() {
 
     return (
         <>
-            <div className="card"
-                data-aos="fade-up"
-                data-aos-duration="500"
-                data-aos-easing="ease-in-out"
-                data-aos-once="false"
-                data-aos-anchor-placement="top-center"
-            >
+            <div className="card fade-up">
                 <h1 className={cx('title')}>Rút gọn liên kết</h1>
                 <div className="form">
                     <div className="form-group">
