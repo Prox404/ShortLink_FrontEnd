@@ -8,16 +8,10 @@ const cx = classNames.bind(styles);
 function AuthLayout({children}) {
     return (<div className={cx('wrapper')}>
         <div className="row">
-            <div className={`col-12 col-lg-6 ${cx('left-container')}`}
-                data-aos="fade-right"
-                data-aos-duration="500"
-                data-aos-easing="ease-in-out"
-                data-aos-once="false"
-                data-aos-anchor-placement="top-center"
-            >
+            <div className={`col-12 col-lg-6 fade-up ${cx('left-container')}`}>
                 {children}
             </div>
-            <div className={`col-12 col-lg-6 ${cx('right-container')}`}>
+            <div className={`col-12 col-lg-6 fade-down ${cx('right-container')}`}>
                 <div>
                     <Carousel />
                 </div>
