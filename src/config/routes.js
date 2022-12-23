@@ -3,7 +3,8 @@ const routes = {
     links: '/links',
     login: '/login',
     register: '/register',
-    getLink: '/:id'
+    getLink: '/:id',
+    contact: '/contact',
 };
 
 export default routes;

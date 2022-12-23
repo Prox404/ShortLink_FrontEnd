@@ -84,7 +84,6 @@ function Sidebar() {
                 </div>)}
             </Menu>
         </div>
-
     </>;
 }
 
