@@ -59,7 +59,21 @@ function Contact() {
                             </a>
                         </div>
                     </div>
-                    <div className={`col-12 col-lg-6 card ${cx('card-right')}`}>Ehee 2</div>
+                    <div className={`col-12 col-lg-6 card ${cx('card-right')}`}>
+                        <div className="form-group">
+                            <label htmlFor="email">Email</label>
+                            <input type="email" className="form-control" id="email" placeholder="Enter your email"/>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="subject">Subject</label>
+                            <input type="text" className="form-control" id="subject" placeholder="Enter your subject"/>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="message">Message</label>
+                            <textarea className="form-control" id="message" rows="3"></textarea>
+                        </div>
+                        <button type="submit" className="btn btn-primary">Submit</button>
+                    </div>
                 </div>
             </div>
         </div>
