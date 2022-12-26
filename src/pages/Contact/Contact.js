@@ -95,15 +95,15 @@ function Contact() {
                     <div className={`col-12 col-lg-6 card ${cx('card-right')}`}>
                         <div className="form-group">
                             <label htmlFor="email">Email</label>
-                            <input value={email} onChange={setEmail} type="email" className="form-control" id="email" placeholder="Enter your email"/>
+                            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="form-control" id="email" placeholder="Enter your email"/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="subject">Subject</label>
-                            <input value={subject} onChange={setSubject} type="text" className="form-control" id="subject" placeholder="Enter your subject"/>
+                            <input type="text" value={subject} onChange={(e) => setSubject(e.target.value)} className="form-control" id="subject" placeholder="Enter your subject"/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="message">Message</label>
-                            <textarea value={message} onChange={setMessage} className="form-control" id="message" rows="3"></textarea>
+                            <textarea className="form-control" id="message" rows="3" value={message} onChange={(e) => setMessage(e.target.value)} ></textarea>
                         </div>
                         <button type="submit" onClick={()=>handleSubmit()} className="btn btn-primary">Submit</button>
                     </div>
