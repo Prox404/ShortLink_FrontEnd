@@ -11,6 +11,7 @@ import Login from '~/pages/Login';
 import Register from '~/pages/Register';
 import GetLink from '~/pages/GetLink/GetLink';
 import Contact from '~/pages/Contact';
+import About from '~/pages/About';
 
 // Public routes
 const publicRoutes = [
@@ -20,6 +21,7 @@ const publicRoutes = [
     { path: config.routes.register, component: Register, layout: AuthLayout },
     { path: config.routes.getLink, component: GetLink , layout: NoLayout},
     { path: config.routes.contact, component: Contact },
+    { path: config.routes.about, component: About },
     // { path: config.routes.about, component: About, layout: HeaderOnly },
 ];
 
