@@ -5,6 +5,7 @@ const routes = {
     register: '/register',
     getLink: '/:id',
     contact: '/contact',
+    about: '/about',
 };
 
 export default routes;
