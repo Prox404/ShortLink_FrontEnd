@@ -1,0 +1,36 @@
+.left-wrapper{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.sub-title{
+    color: var(--colorTextTertiary);
+}
+
+.main-title{
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--colorTextPrimary);
+}
+
+.primary-title{
+    color: var(--primary);
+}
+
+.description{
+    font-weight: 600;
+}
+
+.right-wrapper{
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-img{
+    width: 100%;
+}
