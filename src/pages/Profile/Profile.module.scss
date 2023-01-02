@@ -1,0 +1,69 @@
+.wrapper{
+    position: relative;
+}
+
+.background-banner{
+    background-color: var(--primary);
+    min-height: 200px;
+    border-radius: 10px 10px 0 0;
+}
+
+.avatar-wrapper{
+    height: 130px;
+    width: 130px;
+    position: absolute;
+    top: 160px;
+    left: 50px;
+    background-color: var(--colorBGPrimary);
+    border-radius: 50%;
+    padding: 4px;
+}
+
+.avatar{
+    height: 100%;
+    width: 100%;
+    background-color: var(--default-layout-sidebar-background-color);
+    border-radius: 50%;
+}
+
+.info-wrapper{
+    padding-left: 180px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.username{
+    margin-left: 10px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.outline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--colorTextPrimary);
+    border: 2px solid var(--colorLineSecondary);
+    padding: 0px 10px;
+    font-weight: 500;
+    font-family: 'Nunito';
+
+    &:hover {
+        background-color: rgba(254, 44, 85, 0.06);
+    }
+
+    svg {
+        display: flex;
+        font-size: 19px;
+    }
+}
+
+.link-wrapper{
+    margin-top: 100px;
+}
+
+.user-list-link{
+    margin-left: 0px;
+}
