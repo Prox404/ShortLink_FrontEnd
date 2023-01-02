@@ -23,3 +23,14 @@ export const register = async (params) => {
         return undefined;
     }
 }
+
+export const profile = async () => {
+    try {
+        const res = await request.get(`/users/profile`);
+        return res;
+    } catch (error) {
+        console.log(error);
+        toast.error('Invalid information');
+        return undefined;
+    }
+}
