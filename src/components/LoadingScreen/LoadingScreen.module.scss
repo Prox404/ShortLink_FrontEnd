@@ -1,0 +1,15 @@
+
+.loading-wrapper{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--colorBGSecondary);
+    padding: 20px 25px;
+    border-radius: 16px;
+    z-index: 999999;
+}
+
+.loading-spinner{
+    color: var(--primary);
+}
