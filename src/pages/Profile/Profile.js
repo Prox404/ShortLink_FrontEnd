@@ -34,6 +34,7 @@ function Profile() {
         }
         fetchProfile();
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (<>
@@ -52,7 +53,7 @@ function Profile() {
                             </div>
                         </div>
                         <div className={cx('link-wrapper')}>
-                            <UserListLink className={cx('user-list-link')} />
+                            <UserListLink isNotRight />
                         </div>
                     </>
                 )

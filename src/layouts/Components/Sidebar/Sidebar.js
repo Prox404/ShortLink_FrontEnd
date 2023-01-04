@@ -1,5 +1,6 @@
 import Tippy from '@tippyjs/react';
 import classNames from "classnames/bind";
+import 'tippy.js/dist/tippy.css';
 
 import { RiDashboardFill } from "react-icons/ri";
 import { FaLink } from "react-icons/fa";
@@ -59,7 +60,6 @@ const userMenu = [
     },
 ];
 
-
 function Sidebar() {
     const currentUser = JSON.parse(localStorage.getItem("user")) || undefined;
     return <>
@@ -70,7 +70,11 @@ function Sidebar() {
             <div className={cx('sidebar-item-wrapper')}>
                 {
                     content.map((item, index) => {
-                        return <SidebarItem key={index} {...item} />
+                        return (
+                            <Tippy key={index + 1} className={cx('placement')} content={item.title} placement="right">
+                                <SidebarItem key={index} {...item} />
+                            </Tippy>
+                        )
                     })
                 }
             </div>
