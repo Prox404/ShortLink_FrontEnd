@@ -64,6 +64,7 @@ function UserListLink({isNotRight = false}) {
                     {
 
                         links.length > 0 ? links.map((link, index) => {
+                            // eslint-disable-next-line no-useless-escape
                             let link_regex = /^(?:https?:\/\/)?(?:[^@\/\n]+@)?(?:www\.)?([^:\/?\n]+)/igm;
                             let link_match = link_regex.exec(link.link);
                             link.link = link_match[1];
