@@ -1,10 +1,11 @@
 import classNames from 'classnames/bind';
 import styles from './SidebarItem.module.scss';
 import { Link } from 'react-router-dom';
+import { forwardRef } from 'react';
 
 const cx = classNames.bind(styles);
 
-function SidebarItem(
+const SidebarItem = forwardRef((
     {
         icon,
         className, 
@@ -13,15 +14,15 @@ function SidebarItem(
         onClick, 
         active = false,
         ...props
-    }
-    ) {
+    }, ref
+    ) => {
 
         const classes = cx('wrapper', {
             [className]: className,
             active
         });
     return ( <>
-        <Link className={cx('wrapper', classes)} to={to} onClick={onClick}>
+        <Link ref={ref} className={cx('wrapper', classes)} to={to} onClick={onClick}>
             <div className={cx('icon-wrapper')}>
                 {icon}
             </div>
@@ -30,6 +31,6 @@ function SidebarItem(
             </div>
         </Link>
     </> );
-}
+});
 
-export default SidebarItem;
+export default  SidebarItem;

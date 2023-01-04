@@ -6,7 +6,7 @@ import * as LinkServices from "~/services/LinkServices";
 
 const cx = classNames.bind(styles);
 
-function UserListLink() {
+function UserListLink({isNotRight = false}) {
 
     const [links, setLinks] = useState([]);
 
@@ -50,7 +50,7 @@ function UserListLink() {
     }
 
     return <>
-        <div className="card ps-0 pe-0 pb-0 responsive-card fade-up">
+        <div className={`card ps-0 pe-0 pb-0 responsive-card fade-up ${isNotRight ? cx('not-responsive-card') : ''}`}>
             <h1 className="mb-4 ms-4">Danh sách liên kết</h1>
             <table className="table">
                 <thead>

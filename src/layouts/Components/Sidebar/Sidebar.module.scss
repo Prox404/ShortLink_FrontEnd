@@ -18,6 +18,10 @@
     height: 100px;
 }
 
+.placement{
+    display: none;
+}
+
 .sidebar-item{
     display:block;
 }
@@ -59,6 +63,10 @@
         height: 50px;
     }
 
+    .placement{
+        display: block;
+    }
+
     .profile-name{
         display: none;
     }
@@ -73,9 +81,14 @@
         flex-direction: row;
     }
 
+    .placement{
+        display: none;
+    }
+
     .profile-wrapper {
         border-top: none;
         padding: 0;
+        flex-direction: column;
     }
 
     .profile-img{
@@ -90,5 +103,12 @@
         flex-direction: row;
         justify-content: space-evenly;
         width: 100%;
+    }
+
+    .profile-name{
+        display: block;
+        font-size: 10px;
+        margin-top: 7px;
+        color: var(--colorTextTertiary);
     }
 }
