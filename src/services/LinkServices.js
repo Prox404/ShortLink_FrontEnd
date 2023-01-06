@@ -12,9 +12,9 @@ export const store = async (params) => {
     }
 }
 
-export const getUserLink = async () => {
+export const getUserLink = async (page) => {
     try {
-        const res = await request.get(`/links/get`);
+        const res = await request.get(`/links/get?page=${page}`);
         return res;
     } catch (error) {
         toast.info(error.response.data.error ?? 'Session expired, please try login again !');

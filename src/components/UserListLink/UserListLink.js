@@ -1,27 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import classNames from "classnames/bind";
+import { BsFillCaretRightFill, BsFillCaretLeftFill } from "react-icons/bs";
 
 import styles from "./UserListLink.module.scss";
 import * as LinkServices from "~/services/LinkServices";
+import Table from "~/components/Table";
 
 const cx = classNames.bind(styles);
 
-function UserListLink({isNotRight = false}) {
+function UserListLink({ isNotRight = false }) {
+
+    console.log("re-render");
 
     const [links, setLinks] = useState([]);
-
-    useEffect(() => {
-        const fetchLinks = async () => {
-            const res = await LinkServices.getUserLink();
-            if (res) {
-                setLinks(res.data);
-            }
-        };
-        fetchLinks();
-    }, []);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [page, setPage] = useState(1);
 
     function timeSince(date) {
         date = new Date(date);
+        // console.log(date);
 
         var seconds = Math.floor((new Date() - date) / 1000);
 
@@ -49,37 +46,97 @@ function UserListLink({isNotRight = false}) {
         return Math.floor(seconds) + " seconds";
     }
 
+    useEffect(() => {
+        const fetchLinks = async () => {
+            const res = await LinkServices.getUserLink(currentPage);
+            if (res) {
+                setPage(res.pages);
+                setCurrentPage(res.current);
+                res.data.forEach((link, index) => {
+                    // eslint-disable-next-line no-useless-escape
+                    let link_regex = /^(?:https?:\/\/)?(?:[^@\/\n]+@)?(?:www\.)?([^:\/?\n]+)/igm;
+                    let link_match = link_regex.exec(link.link);
+                    link.link = link_match[1];
+
+                    link.createdAt = timeSince(link.createdAt);
+                    delete link._id;
+                    delete link.__v;
+                    delete link.password;
+                    delete link.user_id;
+                    delete link.updatedAt;
+
+                    setLinks(res.data);
+                });
+            }
+        };
+        fetchLinks();
+    }, [currentPage]);
+
+    const head = [
+        {
+            title: "Host",
+            sortable: true,
+            valueOf: "link",
+        },
+        {
+            title: "Rút gọn",
+            sortable: false,
+            valueOf: "short_link",
+        },
+        {
+            title: "Ngày tạo",
+            sortable: true,
+            valueOf: "createdAt",
+        }
+    ];
+
+    const onNextPage = useCallback(() => {
+        if (currentPage < page) {
+            setCurrentPage(currentPage + 1);
+        }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [currentPage]);
+
+    const onPrevPage = useCallback(() => {
+        if (currentPage > 1) {
+            setCurrentPage(currentPage - 1);
+        }
+    }, [currentPage]);
+
+    const onCurrentPage = useCallback((page) => {
+        setCurrentPage(page);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [currentPage]);
+
     return <>
         <div className={`card ps-0 pe-0 pb-0 responsive-card fade-up ${isNotRight ? cx('not-responsive-card') : ''}`}>
             <h1 className="mb-4 ms-4">Danh sách liên kết</h1>
-            <table className="table">
-                <thead>
-                    <tr>
-                        <th>Link</th>
-                        <th>Short Link</th>
-                        <th>Created At</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
+            <Table head={head} body={links} />
+            <div className="paginate">
 
-                        links.length > 0 ? links.map((link, index) => {
-                            // eslint-disable-next-line no-useless-escape
-                            let link_regex = /^(?:https?:\/\/)?(?:[^@\/\n]+@)?(?:www\.)?([^:\/?\n]+)/igm;
-                            let link_match = link_regex.exec(link.link);
-                            link.link = link_match[1];
+                {
+                    currentPage > 1 && (
+                        <button className="paginate-item" onClick={()=> onPrevPage}>
+                            <BsFillCaretLeftFill />
+                        </button>
+                    )
+                }
+                {
+                    Array.from(Array(page).keys()).map((item, index) => {
+                        console.log((item + 1).toString() === currentPage);
+                        return <button key={index} onClick={()=>onCurrentPage(item + 1)} className={cx('paginate-item', { active: currentPage === (item + 1).toString() })}>{item + 1}</button>
+                    })
+                }
+                {
+                    currentPage < page && (
+                        <button className="paginate-item" onClick={()=> onNextPage}>
+                            <BsFillCaretRightFill />
+                        </button>
+                    )
+                }
 
-                            return <tr key={index}>
-                                <td>{link.link}</td>
-                                <td>{link.short_link}</td>
-                                <td>{timeSince(link.createdAt)}</td>
-                            </tr>
-                        }) : <tr>
-                            <td colSpan="3">No data</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
+            </div>
         </div>
 
     </>;

@@ -2325,7 +2325,7 @@ h6 {
     border-bottom-left-radius: 0;
 }
 
-.input-sm{
+.input-sm {
     max-width: 400px;
 }
 
@@ -2354,6 +2354,7 @@ h6 {
 
 .table thead th {
     color: var(--black);
+    vertical-align: middle;
     background-color: var(--primary);
 }
 
@@ -2409,10 +2410,58 @@ tr {
     text-overflow: ellipsis;
 }
 
+.table .sort {
+    display: inline-grid;
+    font-size: 10px;
+    background-color: transparent;
+    padding-left: 10px;
+}
+
+.table thead button{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    margin-left: 5px;
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.table thead button.ascending {
+   
+    display: inline-block;
+}
+
+.table thead button.descending {
+    transform: rotate(180deg);
+    display: inline-block;
+}
+
+
 .a-link {
     color: var(--colorPrimary) !important;
     font-weight: 600;
     text-decoration: none;
+}
+
+.paginate {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 10px 10px 0px 10px;
+    padding-bottom: 10px;
+}
+
+.paginate-item {
+    padding: 10px 15px;
+    border-radius: 50%;
+    font-weight: 600;
+    background-color: var(--default-layout-sidebar-background-color);
+    color: var(--colorTextPrimary);
+}
+
+.paginate .active {
+    background-color: var(--colorPrimary);
+    color: var(--black);
 }
 
 @keyframes fadeUp {
@@ -2420,6 +2469,7 @@ tr {
         opacity: 0;
         transform: translateY(50px);
     }
+
     100% {
         opacity: 1;
         transform: translateY(0);
@@ -2447,6 +2497,7 @@ tr {
         opacity: 0;
         transform: translateY(-50px);
     }
+
     100% {
         opacity: 1;
         transform: translateY(0);
@@ -2459,10 +2510,12 @@ tr {
         opacity: 0;
         transform: translateX(-50px);
     }
+
     80% {
         opacity: 0.8;
         transform: translateX(10px);
     }
+
     100% {
         opacity: 1;
         transform: translateX(0);
@@ -2474,10 +2527,12 @@ tr {
         opacity: 0;
         transform: translateX(50px);
     }
+
     80% {
         opacity: 0.8;
         transform: translateX(-10px);
     }
+
     100% {
         opacity: 1;
         transform: translateX(0);
