@@ -2415,6 +2415,27 @@ tr {
     text-decoration: none;
 }
 
+.paginate{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 10px 10px 0px 10px;
+    padding-bottom: 10px;
+}
+
+.paginate-item{
+    padding: 10px 15px;
+    border-radius:50%;
+    font-weight: 600;
+    background-color: var(--default-layout-sidebar-background-color);
+    color: var(--colorTextPrimary);
+}
+
+.paginate .active{
+    background-color: var(--colorPrimary);
+    color: var(--black);
+}
+
 @keyframes fadeUp {
     0% {
         opacity: 0;
