@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import classNames from "classnames/bind";
 import { BsFillCaretRightFill, BsFillCaretLeftFill } from "react-icons/bs";
 
@@ -48,7 +48,7 @@ function UserListLink({ isNotRight = false }) {
 
     useEffect(() => {
         const fetchLinks = async () => {
-            const res = await LinkServices.getUserLink(page);
+            const res = await LinkServices.getUserLink(currentPage);
             if (res) {
                 setPage(res.pages);
                 setCurrentPage(res.current);
@@ -70,13 +70,44 @@ function UserListLink({ isNotRight = false }) {
             }
         };
         fetchLinks();
-    }, [page]);
+    }, [currentPage]);
 
     const head = [
-        'Link',
-        'Short Link',
-        'Created At'
+        {
+            title: "Host",
+            sortable: true,
+            valueOf: "link",
+        },
+        {
+            title: "Rút gọn",
+            sortable: false,
+            valueOf: "short_link",
+        },
+        {
+            title: "Ngày tạo",
+            sortable: true,
+            valueOf: "createdAt",
+        }
     ];
+
+    const onNextPage = useCallback(() => {
+        if (currentPage < page) {
+            setCurrentPage(currentPage + 1);
+        }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [currentPage]);
+
+    const onPrevPage = useCallback(() => {
+        if (currentPage > 1) {
+            setCurrentPage(currentPage - 1);
+        }
+    }, [currentPage]);
+
+    const onCurrentPage = useCallback((page) => {
+        setCurrentPage(page);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [currentPage]);
 
     return <>
         <div className={`card ps-0 pe-0 pb-0 responsive-card fade-up ${isNotRight ? cx('not-responsive-card') : ''}`}>
@@ -86,7 +117,7 @@ function UserListLink({ isNotRight = false }) {
 
                 {
                     currentPage > 1 && (
-                        <button className="paginate-item">
+                        <button className="paginate-item" onClick={()=> onPrevPage}>
                             <BsFillCaretLeftFill />
                         </button>
                     )
@@ -94,12 +125,12 @@ function UserListLink({ isNotRight = false }) {
                 {
                     Array.from(Array(page).keys()).map((item, index) => {
                         console.log((item + 1).toString() === currentPage);
-                        return <button key={index} className={cx('paginate-item', { active: currentPage === (item + 1).toString() })}>{item + 1}</button>
+                        return <button key={index} onClick={()=>onCurrentPage(item + 1)} className={cx('paginate-item', { active: currentPage === (item + 1).toString() })}>{item + 1}</button>
                     })
                 }
                 {
                     currentPage < page && (
-                        <button className="paginate-item">
+                        <button className="paginate-item" onClick={()=> onNextPage}>
                             <BsFillCaretRightFill />
                         </button>
                     )

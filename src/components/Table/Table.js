@@ -1,8 +1,18 @@
+import { BsFillCaretUpFill, BsFillCaretDownFill } from "react-icons/bs";
+import useSortableData from "~/hooks/useSortableData";
+
 const Table = ({
     head = [],
     body = []
 }) => {
 
+    const { items, requestSort, sortConfig } = useSortableData(body);
+    const getClassNamesFor = (name) => {
+        if (!sortConfig) {
+            return;
+        }
+        return sortConfig.key === name ? sortConfig.direction : undefined;
+    };
     return (
         <>
             <table className="table">
@@ -12,7 +22,22 @@ const Table = ({
                         {
                             head.map((item, index) => {
                                 return (
-                                    <th key={index}>{item}</th>
+                                    <th key={index}>
+
+                                        {item.title}
+                                        {
+                                            item.sortable && (
+                                                <button
+                                                    type="button"
+                                                    onClick={() => requestSort(item.valueOf)}
+                                                    className={getClassNamesFor(item.valueOf)}
+                                                >
+                                                    <BsFillCaretUpFill />
+                                                </button>
+                                            )
+                                        }
+
+                                    </th>
                                 )
                             })
                         }
@@ -21,7 +46,7 @@ const Table = ({
                 </thead>
                 <tbody>
                     {
-                        body.map((row, index) => {
+                        items.map((row, index) => {
                             return (
                                 <tr key={index}>
                                     {
