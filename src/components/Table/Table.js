@@ -1,4 +1,4 @@
-import { BsFillCaretUpFill, BsFillCaretDownFill } from "react-icons/bs";
+import { BsFillCaretUpFill } from "react-icons/bs";
 import useSortableData from "~/hooks/useSortableData";
 
 const Table = ({
