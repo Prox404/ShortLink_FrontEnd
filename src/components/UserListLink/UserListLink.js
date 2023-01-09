@@ -46,10 +46,6 @@ function UserListLink({ isNotRight = false }) {
         return Math.floor(seconds) + " seconds";
     }
 
-    const s = (data) => {
-        console.log(data);
-    }
-
     useEffect(() => {
         const fetchLinks = async () => {
             const res = await LinkServices.getUserLink(currentPage);
@@ -69,7 +65,7 @@ function UserListLink({ isNotRight = false }) {
                     delete link.user_id;
                     delete link.updatedAt;
 
-                    link.edit = <button onClick={()=> s(link.short_link)} className="btn btn-primary">Sửa</button>;
+                    link.edit = <button className="btn btn-primary">Sửa</button>;
 
                     setLinks(res.data);
                 });
