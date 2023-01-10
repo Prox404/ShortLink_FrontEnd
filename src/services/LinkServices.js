@@ -50,3 +50,13 @@ export const overview = async () => {
         return undefined;
     }
 }
+
+export const deleteLink = async (short_link) => {
+    try {
+        const res = await request.del(`/links/destroy/${short_link}`);
+        return res;
+    } catch (error) {
+        toast.error(error.response.data.error ?? 'Failed to delete link');
+        return undefined;
+    }
+}
