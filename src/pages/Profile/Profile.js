@@ -53,7 +53,7 @@ function Profile() {
                             </div>
                         </div>
                         <div className={cx('link-wrapper')}>
-                            <UserListLink isNotRight />
+                            <UserListLink isNotRight hasAction/>
                         </div>
                     </>
                 )
