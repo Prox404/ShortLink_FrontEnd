@@ -2437,6 +2437,37 @@ tr {
     display: inline-block;
 }
 
+@media only screen and (max-width : 767px){
+    .table th{
+        display: none;
+    }
+    .table tr{
+        display: block;
+        padding: 0px 10px 10px 10px;
+        margin-bottom: 10px;
+
+    }
+    
+    .table td{
+        display: flex;
+        text-align: right;
+        justify-content: space-between;
+    }
+
+    .table td:last-child{
+        max-width: none;
+    }
+    
+    .table td::before{
+        content: attr(data-label);
+        font-weight: bold;
+    }
+
+    .table tbody tr{
+        background-color: var(--colorBGHover);
+    }
+}
+
 
 .a-link {
     color: var(--colorPrimary) !important;

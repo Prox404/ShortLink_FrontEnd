@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useCallback } from "react";
 import classNames from "classnames/bind";
 import { BsFillCaretRightFill, BsFillCaretLeftFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import { RiDeleteBinLine, RiEdit2Line } from "react-icons/ri";
 
 import styles from "./UserListLink.module.scss";
 import * as LinkServices from "~/services/LinkServices";
 import Table from "~/components/Table";
-import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
 
 const cx = classNames.bind(styles);
 
@@ -85,8 +86,8 @@ function UserListLink({
 
                     if(hasAction){
                         link.action = <div className="action">
-                            <Link to={`/links/edit/${link._id}`} className="btn btn-light">Sửa</Link>
-                            <button className="btn btn-danger ms-3" onClick={() => handleDeleteLink(link.short_link)}>Xóa</button>
+                            <Link to={`/links/edit/${link._id}`} className="btn btn-light"><RiEdit2Line/></Link>
+                            <button className="btn btn-danger ms-3" onClick={() => handleDeleteLink(link.short_link)}><RiDeleteBinLine/></button>
                         </div>;
                     }
                     delete link._id;
