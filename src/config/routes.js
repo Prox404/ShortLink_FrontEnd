@@ -7,6 +7,7 @@ const routes = {
     contact: '/contact',
     about: '/about',
     profile: '/profile/:username',
+    editLink: '/links/edit/:id',
 };
 
 export default routes;
