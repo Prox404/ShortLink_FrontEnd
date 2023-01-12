@@ -13,6 +13,7 @@ import GetLink from '~/pages/GetLink/GetLink';
 import Contact from '~/pages/Contact';
 import About from '~/pages/About';
 import Profile from '~/pages/Profile';
+import EditLink from '~/pages/EditLink';
 
 // Public routes
 const publicRoutes = [
@@ -24,6 +25,7 @@ const publicRoutes = [
     { path: config.routes.contact, component: Contact },
     { path: config.routes.about, component: About },
     { path: config.routes.profile, component: Profile },
+    { path: config.routes.editLink, component: EditLink },
     // { path: config.routes.about, component: About, layout: HeaderOnly },
 ];
 

@@ -1,4 +1,4 @@
-import { BsFillCaretUpFill, BsFillCaretDownFill } from "react-icons/bs";
+import { BsFillCaretUpFill } from "react-icons/bs";
 import useSortableData from "~/hooks/useSortableData";
 
 const Table = ({
@@ -50,9 +50,9 @@ const Table = ({
                             return (
                                 <tr key={index}>
                                     {
-                                        Object.keys(row).map((key, index) => {
+                                        Object.keys(row).map((key, index1) => {
                                             return (
-                                                <td key={index}>{row[key]}</td>
+                                                <td key={index1} data-label={head[index1].title} >{row[key]}</td>
                                             )
                                         })
                                     }

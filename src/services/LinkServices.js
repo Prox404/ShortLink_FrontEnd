@@ -50,3 +50,23 @@ export const overview = async () => {
         return undefined;
     }
 }
+
+export const deleteLink = async (short_link) => {
+    try {
+        const res = await request.del(`/links/destroy/${short_link}`);
+        return res;
+    } catch (error) {
+        toast.error(error.response.data.error ?? 'Failed to delete link');
+        return undefined;
+    }
+}
+
+export const update = async (params, short_link) => {
+    try {
+        const res = await request.put(`/links/update/${short_link}`, params);
+        return res;
+    } catch (error) {
+        toast.error(error.response.data.error ?? 'Failed to update link');
+        return undefined;
+    }
+}

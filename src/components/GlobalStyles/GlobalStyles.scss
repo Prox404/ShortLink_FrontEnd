@@ -2234,7 +2234,7 @@ h6 {
 }
 
 .btn-light {
-    color: #000;
+    color: #000 !important;
     background-color: #f8f9fa;
     border-color: #f8f9fa;
 }
@@ -2435,6 +2435,37 @@ tr {
 .table thead button.descending {
     transform: rotate(180deg);
     display: inline-block;
+}
+
+@media only screen and (max-width : 767px){
+    .table th{
+        display: none;
+    }
+    .table tr{
+        display: block;
+        padding: 0px 10px 10px 10px;
+        margin-bottom: 10px;
+
+    }
+    
+    .table td{
+        display: flex;
+        text-align: right;
+        justify-content: space-between;
+    }
+
+    .table td:last-child{
+        max-width: none;
+    }
+    
+    .table td::before{
+        content: attr(data-label);
+        font-weight: bold;
+    }
+
+    .table tbody tr{
+        background-color: var(--colorBGHover);
+    }
 }
 
 

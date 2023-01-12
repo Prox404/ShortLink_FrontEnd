@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useCallback } from "react";
 import classNames from "classnames/bind";
 import { BsFillCaretRightFill, BsFillCaretLeftFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import { RiDeleteBinLine, RiEdit2Line } from "react-icons/ri";
 
 import styles from "./UserListLink.module.scss";
 import * as LinkServices from "~/services/LinkServices";
@@ -8,7 +11,10 @@ import Table from "~/components/Table";
 
 const cx = classNames.bind(styles);
 
-function UserListLink({ isNotRight = false }) {
+function UserListLink({ 
+    isNotRight = false,
+    hasAction = false
+}) {
 
     console.log("re-render");
 
@@ -46,6 +52,19 @@ function UserListLink({ isNotRight = false }) {
         return Math.floor(seconds) + " seconds";
     }
 
+    const handleDeleteLink = async (short_link) => {
+        try {
+            const res = await LinkServices.deleteLink(short_link);
+            if (res) {
+                toast.success(res.message);
+                const newLinks = links.filter(link => link.short_link !== short_link);
+                setLinks(newLinks);
+            }
+        } catch (err) {
+            toast.error("Có lỗi xảy ra !");
+        }
+    }
+
     useEffect(() => {
         const fetchLinks = async () => {
             const res = await LinkServices.getUserLink(currentPage);
@@ -59,34 +78,48 @@ function UserListLink({ isNotRight = false }) {
                     link.link = link_match[1];
 
                     link.createdAt = timeSince(link.createdAt);
-                    delete link._id;
+                    
                     delete link.__v;
                     delete link.password;
                     delete link.user_id;
                     delete link.updatedAt;
+
+                    if(hasAction){
+                        link.action = <div className="action">
+                            <Link to={`/links/edit/${link._id}`} className="btn btn-light"><RiEdit2Line/></Link>
+                            <button className="btn btn-danger ms-3" onClick={() => handleDeleteLink(link.short_link)}><RiDeleteBinLine/></button>
+                        </div>;
+                    }
+                    delete link._id;
 
                     setLinks(res.data);
                 });
             }
         };
         fetchLinks();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentPage]);
 
     const head = [
-        {
-            title: "Host",
-            sortable: true,
-            valueOf: "link",
-        },
         {
             title: "Rút gọn",
             sortable: false,
             valueOf: "short_link",
         },
         {
+            title: "Host",
+            sortable: true,
+            valueOf: "link",
+        },
+        {
             title: "Ngày tạo",
             sortable: true,
             valueOf: "createdAt",
+        },
+        hasAction && {
+            title: "Hành động",
+            sortable: false,
+            valueOf: "action",
         }
     ];
 
