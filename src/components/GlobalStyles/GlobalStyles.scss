@@ -2477,23 +2477,40 @@ tr {
 
 .paginate {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
-    margin: 10px 10px 0px 10px;
-    padding-bottom: 10px;
+    padding: 10px;
+    border-top: 1.5px solid var(--colorLineSecondary);
 }
 
 .paginate-item {
     padding: 10px 15px;
-    border-radius: 50%;
+    border-radius: 5px;
     font-weight: 600;
     background-color: var(--default-layout-sidebar-background-color);
+    border: 1px solid var(--colorLineSecondary);
     color: var(--colorTextPrimary);
+}
+
+.paginate-pages {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.paginate-pages .paginate-item:not(:last-child) {
+    margin-right: 7px;
 }
 
 .paginate .active {
     background-color: var(--colorPrimary);
+    border: 1.5px solid var(--colorPrimary);
     color: var(--black);
+}
+
+.paginate .disabled {
+    opacity: 0.5;
 }
 
 @keyframes fadeUp {

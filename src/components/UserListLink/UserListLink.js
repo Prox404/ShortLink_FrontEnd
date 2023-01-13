@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
 import classNames from "classnames/bind";
-import { BsFillCaretRightFill, BsFillCaretLeftFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { RiDeleteBinLine, RiEdit2Line } from "react-icons/ri";
@@ -11,7 +10,7 @@ import Table from "~/components/Table";
 
 const cx = classNames.bind(styles);
 
-function UserListLink({ 
+function UserListLink({
     isNotRight = false,
     hasAction = false
 }) {
@@ -78,16 +77,16 @@ function UserListLink({
                     link.link = link_match[1];
 
                     link.createdAt = timeSince(link.createdAt);
-                    
+
                     delete link.__v;
                     delete link.password;
                     delete link.user_id;
                     delete link.updatedAt;
 
-                    if(hasAction){
+                    if (hasAction) {
                         link.action = <div className="action">
-                            <Link to={`/links/edit/${link._id}`} className="btn btn-light"><RiEdit2Line/></Link>
-                            <button className="btn btn-danger ms-3" onClick={() => handleDeleteLink(link.short_link)}><RiDeleteBinLine/></button>
+                            <Link to={`/links/edit/${link._id}`} className="btn btn-light"><RiEdit2Line /></Link>
+                            <button className="btn btn-danger ms-3" onClick={() => handleDeleteLink(link.short_link)}><RiDeleteBinLine /></button>
                         </div>;
                     }
                     delete link._id;
@@ -97,7 +96,7 @@ function UserListLink({
             }
         };
         fetchLinks();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentPage]);
 
     const head = [
@@ -128,18 +127,19 @@ function UserListLink({
             setCurrentPage(currentPage + 1);
         }
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [currentPage]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const onPrevPage = useCallback(() => {
         if (currentPage > 1) {
             setCurrentPage(currentPage - 1);
         }
-    }, [currentPage]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const onCurrentPage = useCallback((page) => {
         setCurrentPage(page);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentPage]);
 
     return <>
@@ -149,24 +149,34 @@ function UserListLink({
             <div className="paginate">
 
                 {
-                    currentPage > 1 && (
-                        <button className="paginate-item" onClick={()=> onPrevPage}>
-                            <BsFillCaretLeftFill />
+                    (currentPage > 1 && (
+                        <button className="paginate-item" onClick={() => onPrevPage()}>
+                            Prev
                         </button>
-                    )
-                }
-                {
-                    Array.from(Array(page).keys()).map((item, index) => {
-                        console.log((item + 1).toString() === currentPage);
-                        return <button key={index} onClick={()=>onCurrentPage(item + 1)} className={cx('paginate-item', { active: currentPage === (item + 1).toString() })}>{item + 1}</button>
-                    })
-                }
-                {
-                    currentPage < page && (
-                        <button className="paginate-item" onClick={()=> onNextPage}>
-                            <BsFillCaretRightFill />
+                    )) || (<>
+                        <button className="paginate-item disabled">
+                            Prev
                         </button>
-                    )
+                    </>)
+                }
+                <div className="paginate-pages">
+                    {
+                        Array.from(Array(page).keys()).map((item, index) => {
+                            console.log((item + 1).toString() === currentPage);
+                            return <button key={index} onClick={() => onCurrentPage(item + 1)} className={cx('paginate-item', { active: currentPage === (item + 1).toString() })}>{item + 1}</button>
+                        })
+                    }
+                </div>
+                {
+                    (currentPage < page && (
+                        <button className="paginate-item" onClick={() => onNextPage()}>
+                            Next
+                        </button>
+                    )) || (<>
+                        <button className="paginate-item disabled">
+                            Next
+                        </button>
+                    </>)
                 }
 
             </div>
