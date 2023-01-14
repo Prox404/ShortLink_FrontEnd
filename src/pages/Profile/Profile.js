@@ -1,6 +1,7 @@
 import classNames from "classnames/bind";
 import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { MdOutlineEdit } from "react-icons/md";
 
 import * as UserServices from "~/services/UserServices";
 import styles from "./Profile.module.scss";
@@ -8,6 +9,7 @@ import AuthMiddleware from "~/middlewares/AuthMiddleware";
 import UserListLink from "~/components/UserListLink/UserListLink";
 
 const cx = classNames.bind(styles);
+
 function Profile() {
 
     AuthMiddleware();
@@ -34,7 +36,7 @@ function Profile() {
         }
         fetchProfile();
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (<>
@@ -42,18 +44,20 @@ function Profile() {
             {
                 user && (
                     <>
-                        <div className={cx('background-banner')}/>
+                        <div className={cx('background-banner')} />
                         <div className={cx('avatar-wrapper')}>
                             <img className={cx('avatar')} src={user.avatar} alt="avatar" />
                         </div>
                         <div className={cx('info-wrapper')}>
                             <p className={cx('username')}>{user.username}</p>
                             <div className={`mt-2 ${cx('actions-wrapper')}`}>
-                                <button className={`btn ${cx('outline')}`}>Edit</button>
+                                <Link to={`/profile/edit/${user.username}`} className={`btn ${cx('outline')}`}>
+                                    <MdOutlineEdit />
+                                </Link>
                             </div>
                         </div>
                         <div className={cx('link-wrapper')}>
-                            <UserListLink isNotRight hasAction/>
+                            <UserListLink isNotRight hasAction />
                         </div>
                     </>
                 )
