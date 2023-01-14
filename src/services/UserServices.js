@@ -34,3 +34,14 @@ export const profile = async () => {
         return undefined;
     }
 }
+
+export const update = async (params) => {
+    try {
+        const res = await request.put(`/users/update`, params);
+        return res;
+    } catch (error) {
+        console.log(error);
+        toast.error('Invalid information');
+        return undefined;
+    }
+}

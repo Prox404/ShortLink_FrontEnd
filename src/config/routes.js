@@ -8,6 +8,7 @@ const routes = {
     about: '/about',
     profile: '/profile/:username',
     editLink: '/links/edit/:id',
+    editProfile: '/profile/edit/:username',
 };
 
 export default routes;
