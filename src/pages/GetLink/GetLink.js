@@ -43,8 +43,16 @@ function GetLink() {
         }
     }
 
-    const { isShowing, toggle } = useModal();
+    const getHost = (url) => {
+        // eslint-disable-next-line no-useless-escape
+        let link_regex = /^(?:https?:\/\/)?(?:[^@\/\n]+@)?(?:www\.)?([^:\/?\n]+)/igm;
+        let link_match = link_regex.exec(url);
+        return link_match[1];
+    }
 
+
+    const { isShowing, toggle } = useModal();
+    
 
     return (<div className={cx('wrapper')}>
         {
@@ -64,6 +72,31 @@ function GetLink() {
                                         Đây là liên kết của bạn
                                     </p>
                                     <center>
+                                        <table className={`horizontal-table mb-3`}>
+                                            <tbody>
+
+                                                <tr>
+                                                    <td>Rút gọn</td>
+                                                    <td>{links.short_link}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Đích</td>
+                                                    <td>
+                                                        {
+                                                            getHost(links.link)
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Mật khẩu</td>
+                                                    <td>
+                                                        {
+                                                            links.password === 'false' ? 'Không' : links.password
+                                                        }
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                         <a href={links.link} className="btn btn-primary">Đến trang đích</a>
                                         <br />
                                         <button className="btn btn-danger mt-3" onClick={toggle}>Quét Mã QR</button>
@@ -94,7 +127,6 @@ function GetLink() {
                                             <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="form-control input-sm mb-3" placeholder="Mật khẩu" />
                                             <button onClick={handleSubmit} className="btn btn-primary">Tiếp tục</button>
                                         </center>
-
                                     </>
                                 )
                             }

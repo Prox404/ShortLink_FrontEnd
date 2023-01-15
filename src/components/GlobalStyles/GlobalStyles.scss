@@ -2437,6 +2437,33 @@ tr {
     display: inline-block;
 }
 
+.horizontal-table {
+    background-color: var(--colorBGTertiary);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.horizontal-table tr{
+    border-radius: 5px;
+}
+
+.horizontal-table tr{
+    border-top: 1px solid var(--white);
+}
+
+// .horizontal-table tr:last-child{
+//     border-bottom: none;
+// }
+
+.horizontal-table tr td:nth-child(1){
+    font-weight: bold;
+}
+
+.horizontal-table tr td:not(:nth-child(1)){
+    padding-left: 20px;
+}
+
+
 @media only screen and (max-width : 767px){
     .table th{
         display: none;
@@ -2463,9 +2490,6 @@ tr {
         font-weight: bold;
     }
 
-    .table tbody tr{
-        background-color: var(--colorBGHover);
-    }
 }
 
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import classNames from "classnames/bind";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import { RiDeleteBinLine, RiEdit2Line } from "react-icons/ri";
+import { RiDeleteBinLine, RiEdit2Line, RiFileCopyLine } from "react-icons/ri";
 
 import styles from "./UserListLink.module.scss";
 import * as LinkServices from "~/services/LinkServices";
@@ -64,6 +64,11 @@ function UserListLink({
         }
     }
 
+    const handleCopyLink = (short_link) => {
+        navigator.clipboard.writeText('pr0x.me/' + short_link);
+        toast.success("Đã copy link !");
+    }
+
     useEffect(() => {
         const fetchLinks = async () => {
             const res = await LinkServices.getUserLink(currentPage);
@@ -85,8 +90,13 @@ function UserListLink({
 
                     if (hasAction) {
                         link.action = <div className="action">
-                            <Link to={`/links/edit/${link._id}`} className="btn btn-light"><RiEdit2Line /></Link>
+                            <button className="btn btn-light" onClick={() => handleCopyLink(link.short_link)}><RiFileCopyLine/></button>
+                            <Link to={`/links/edit/${link._id}`} className="btn btn-light ms-3"><RiEdit2Line /></Link>
                             <button className="btn btn-danger ms-3" onClick={() => handleDeleteLink(link.short_link)}><RiDeleteBinLine /></button>
+                        </div>;
+                    }else{
+                        link.action = <div className="action">
+                            <button className="btn btn-light" onClick={() => handleCopyLink(link.short_link)}><RiFileCopyLine/></button>
                         </div>;
                     }
                     delete link._id;
@@ -115,7 +125,7 @@ function UserListLink({
             sortable: true,
             valueOf: "createdAt",
         },
-        hasAction && {
+        {
             title: "Hành động",
             sortable: false,
             valueOf: "action",

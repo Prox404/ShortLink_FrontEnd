@@ -1,5 +1,7 @@
 import { BsFillCaretUpFill } from "react-icons/bs";
+
 import useSortableData from "~/hooks/useSortableData";
+import NotFound from "../NotFound";
 
 const Table = ({
     head = [],
@@ -46,7 +48,7 @@ const Table = ({
                 </thead>
                 <tbody>
                     {
-                        items.map((row, index) => {
+                        (items.length > 0 && items.map((row, index) => {
                             return (
                                 <tr key={index}>
                                     {
@@ -58,7 +60,13 @@ const Table = ({
                                     }
                                 </tr>
                             )
-                        })
+                        })) || (
+                            <tr>
+                                <td colSpan={head.length}>
+                                    <NotFound />
+                                </td>
+                            </tr>
+                        )
                     }
                 </tbody>
             </table>
