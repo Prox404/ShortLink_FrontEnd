@@ -4,6 +4,7 @@ const images = {
     ppt3: require('~/assets/images/ptt4.png'),
     welcome: require('~/assets/images/welcome.svg').default,
     loading: require('~/assets/images/loading.svg').default,
+    notFound: require('~/assets/images/not-found.svg').default,
 }
 
 export default images
