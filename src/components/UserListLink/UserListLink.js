@@ -126,10 +126,16 @@ function UserListLink({
             valueOf: "createdAt",
         },
         {
+            title: "Lượt xem",
+            sortable: true,
+            valueOf: "watch",
+        },
+        {
             title: "Hành động",
             sortable: false,
             valueOf: "action",
-        }
+        },
+        
     ];
 
     const onNextPage = useCallback(() => {
