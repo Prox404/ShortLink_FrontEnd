@@ -52,9 +52,13 @@ const Table = ({
                             return (
                                 <tr key={index}>
                                     {
-                                        Object.keys(row).map((key, index1) => {
+                                        head.map((item, index) => {
                                             return (
-                                                <td key={index1} data-label={head[index1].title} >{row[key]}</td>
+                                                <td key={index} data-label={head[index].title}>
+                                                    {
+                                                        row[item.valueOf]
+                                                    }
+                                                </td>
                                             )
                                         })
                                     }
