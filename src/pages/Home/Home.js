@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import styles from "./Home.module.scss";
 import * as LinkServices from "~/services/LinkServices";
 import AuthMiddleware from "~/middlewares/AuthMiddleware";
+import { UserListLink } from "~/components/UserListLink";
 
 let cx = classNames.bind(styles);
 
@@ -69,7 +70,9 @@ function Home() {
                     </div>
                 </div>
                 
-
+                <div className="col-12 mt-4">
+                    <UserListLink hasAction isNotRight="true"/>
+                </div>
             </div>
         </>)}
     </>);
