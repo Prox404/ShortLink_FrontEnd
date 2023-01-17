@@ -1,4 +1,4 @@
-.overview-wrapper:not(:last-child) {
+.overview-wrapper:not(:nth-child(3)) {
     padding-right: 16px;
 }
 

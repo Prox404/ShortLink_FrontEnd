@@ -14,6 +14,7 @@ function CreateLinkForm() {
     const [isCustomLink, setIsCustomLink] = useState(false);
     const [currentLink, setCurrentLink] = useState([]);
     const [customLink, setCustomLink] = useState("");
+    const [privacy, setPrivacy] = useState("public");
 
     const handleIsCustomLinkChange = (e) => {
         setIsCustomLink(e.target.checked);
@@ -25,6 +26,7 @@ function CreateLinkForm() {
         params.append('link', link);
         params.append('short_link', customLink);
         params.append('password', password);
+        params.append('privacy', privacy);
         const res = await LinkServices.store(params);
         if (res) {
             toast.success("Link created successfully");
@@ -59,7 +61,13 @@ function CreateLinkForm() {
                         <label className="form-label" htmlFor="password">Mật khẩu</label>
                         <input id="password" onChange={(e) => setPassword(e.target.value)} type="password" className="form-control" value={password} />
                     </div>
-
+                    <div className="form-group">
+                        <label className="form-label" htmlFor="privacy">Chế độ riêng tư</label>
+                        <select id="privacy" onChange={(e) => setPrivacy(e.target.value)} className="form-select" value={privacy}>
+                            <option value="public">Công khai</option>
+                            <option value="private">Riêng tư</option>
+                        </select>
+                    </div>
                     <div className="form-check">
                         <input className="form-check-input" onClick={(e) => handleIsCustomLinkChange(e)} type="checkbox" defaultValue={isCustomLink} id="isCustomLink" />
                         <label className="form-check-label" htmlFor="isCustomLink">
