@@ -2,6 +2,7 @@ import classNames from "classnames/bind";
 import { useState } from 'react';
 import { Link } from "react-router-dom";
 import { toast } from 'react-toastify';
+import { FacebookWithLogin } from "~/components/FacebookWithLogin";
 
 import IsLoginMiddleware from '~/middlewares/IsLoginMiddleware';
 import * as UserServices from "~/services/UserServices";
@@ -57,6 +58,15 @@ function Login() {
                 </Link>
             </p>
             <button type="submit" onClick={handleSubmit} className="btn btn-primary mt-3">Login</button>
+            <div className={`${cx('social-login')}`}>
+                
+                <div className={`${cx('social-login-line')}`}>
+                    <hr/>
+                    <span className="text">Or</span>
+                    <hr/>
+                </div>
+                <FacebookWithLogin />
+            </div>
 
         </>
     );
