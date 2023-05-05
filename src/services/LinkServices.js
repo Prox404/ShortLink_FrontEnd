@@ -17,7 +17,7 @@ export const getUserLink = async (page) => {
         const res = await request.get(`/links/get?page=${page}`);
         return res;
     } catch (error) {
-        toast.info(error.response.data.error ?? 'Session expired, please try login again !');
+        error.response.data.error ?? toast.info(error.response.data.error);
         return undefined;
     }
 }
