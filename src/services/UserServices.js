@@ -41,7 +41,18 @@ export const update = async (params) => {
         return res;
     } catch (error) {
         console.log(error);
-        toast.error('Invalid information');
+        toast.error('Error updating profile');
+        return undefined;
+    }
+}
+
+export const facebookAuth = async (params) => {
+    try {
+        const res = await request.post(`/users/auth/facebook`, params);
+        return res;
+    } catch (error) {
+        console.log(error);
+        toast.error('Error authenticating with facebook');
         return undefined;
     }
 }

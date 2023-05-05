@@ -2,3 +2,28 @@
     height: 100px;
     margin-left: -20px;
 }
+
+.social-login {
+    
+    .social-login-line{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        max-width: 400px;
+
+        hr {
+            width: 100%;
+            border: none;
+            border-top: 1px solid #cccccc5d;
+            margin: 0;
+          }
+
+          span {
+            margin: 0 10px;
+            font-size: 14px;
+            color: #cccccc;
+          }
+    }
+}
