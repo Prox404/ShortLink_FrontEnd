@@ -44,7 +44,7 @@ const FacebookWithLogin = () => {
     return (
 
         <FacebookLogin
-            appId="201329305813967"
+            appId="2900838396716125"
             fields="name,email,picture"
             // onClick={componentClicked}
             callback={responseFacebook}
