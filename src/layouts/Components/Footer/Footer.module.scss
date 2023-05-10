@@ -1,0 +1,43 @@
+.footer-wrapper{
+    background-color: var(--default-layout-sidebar-background-color);
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+}
+
+.logo-wrapper{
+    display: flex;
+    img{
+        height: 50px;
+        width: 50px;
+    }
+}
+
+.btn-social{
+    min-width: 0;
+    padding: 0;
+    margin: 0 5px;
+    background-color: transparent;
+    color: var(--colorTextSecondary) !important;
+    font-size: 2rem;
+    transition: all 0.3s ease-in-out;
+
+    span{
+        display: flex;
+    }
+}
+
+.btn-social:hover{
+    font-size: 2.5rem;
+}
+
+.btn-facebook:hover{
+    color: #3b5998 !important;
+}
+
+.btn-github:hover{
+    color: var(--colorTextPrimary) !important;
+}
+

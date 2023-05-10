@@ -6,6 +6,7 @@ import styles from "./Home.module.scss";
 import * as LinkServices from "~/services/LinkServices";
 import AuthMiddleware from "~/middlewares/AuthMiddleware";
 import { UserListLink } from "~/components/UserListLink";
+import Footer from "~/layouts/Components/Footer/Footer";
 
 let cx = classNames.bind(styles);
 
@@ -73,6 +74,8 @@ function Home() {
                 <div className="col-12 mt-4">
                     <UserListLink hasAction isNotRight="true"/>
                 </div>
+
+                <Footer/>
             </div>
         </>)}
     </>);
