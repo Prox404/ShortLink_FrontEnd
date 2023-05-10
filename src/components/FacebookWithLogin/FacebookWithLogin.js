@@ -44,7 +44,7 @@ const FacebookWithLogin = () => {
     return (
 
         <FacebookLogin
-            appId="201329305813967"
+            appId={process.env.FACEBOOK_APP_ID || '201329305813967'}
             fields="name,email,picture"
             // onClick={componentClicked}
             callback={responseFacebook}
