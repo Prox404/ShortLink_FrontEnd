@@ -6,9 +6,12 @@ import Button from "~/components/Button";
 
 const cx = classNames.bind(styles);
 
-function Footer() {
+function Footer({
+    fixed = false,
+    className = ''
+}) {
     return (<>
-        <div className={`${ cx('footer-wrapper')} mt-4`}>
+        <div className={`${className} ${ cx('footer-wrapper')} mt-4 ${ fixed && cx('fixed')}`}>
             <div className={`${cx('logo-wrapper')}`}>
                 <img src="https://i.ibb.co/176z8y8/Prox-logo-white.png" alt="logo" />
             </div>

@@ -2107,7 +2107,7 @@ h6 {
         font-weight: normal;
         background-color: var(--colorBGQuaternary);
     }
-  }
+}
 
 .form-check {
     display: block;
@@ -2269,6 +2269,23 @@ h6 {
     color: #000 !important;
     background-color: #f8f9fa;
     border-color: #f8f9fa;
+}
+
+.btn:active {
+    transform: scale(0.8);
+    transition: transform 0.2s;
+}
+
+.btn{
+    svg{
+        transition: transform ease 0.4s;
+    }
+}
+
+.btn:hover {
+    svg{
+        transform: rotate(-20deg);
+    }
 }
 
 
@@ -2443,7 +2460,7 @@ tr {
     padding-left: 10px;
 }
 
-.table thead button{
+.table thead button {
     background-color: transparent;
     border: none;
     outline: none;
@@ -2454,7 +2471,7 @@ tr {
 }
 
 .table thead button.ascending {
-   
+
     display: inline-block;
 }
 
@@ -2469,11 +2486,11 @@ tr {
     padding: 10px;
 }
 
-.horizontal-table tr{
+.horizontal-table tr {
     border-radius: 5px;
 }
 
-.horizontal-table tr{
+.horizontal-table tr {
     border-top: 1px solid var(--white);
 }
 
@@ -2481,37 +2498,38 @@ tr {
 //     border-bottom: none;
 // }
 
-.horizontal-table tr td:nth-child(1){
+.horizontal-table tr td:nth-child(1) {
     font-weight: bold;
 }
 
-.horizontal-table tr td:not(:nth-child(1)){
+.horizontal-table tr td:not(:nth-child(1)) {
     padding-left: 20px;
 }
 
 
-@media only screen and (max-width : 767px){
-    .table th{
+@media only screen and (max-width : 767px) {
+    .table th {
         display: none;
     }
-    .table tr{
+
+    .table tr {
         display: block;
         padding: 0px 10px 10px 10px;
         margin-bottom: 10px;
 
     }
-    
-    .table td{
+
+    .table td {
         display: flex;
         text-align: right;
         justify-content: space-between;
     }
 
-    .table td:last-child{
+    .table td:last-child {
         max-width: none;
     }
-    
-    .table td::before{
+
+    .table td::before {
         content: attr(data-label);
         font-weight: bold;
     }

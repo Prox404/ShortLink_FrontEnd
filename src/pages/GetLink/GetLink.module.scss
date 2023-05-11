@@ -20,6 +20,7 @@
     width: 90%;
     min-width: 370px;
     max-height: max-content;
+    z-index: 9;
 }
 
 .main-title{
@@ -36,4 +37,8 @@
     color: var(--colorTextSecondary);
     text-align: center;
     margin-bottom: 10px;
+}
+
+.footer{
+    max-width: 600px;
 }
