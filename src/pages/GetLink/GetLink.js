@@ -7,6 +7,7 @@ import useModal from "~/hooks/useModal";
 import Modal from "~/components/Modal/Modal";
 import LoadingScreen from "~/components/LoadingScreen";
 import styles from "./GetLink.module.scss";
+import Footer from "~/layouts/Components/Footer/Footer";
 
 const cx = classNames.bind(styles);
 
@@ -103,7 +104,7 @@ function GetLink() {
                                         <br />
                                         <a href={`https://www.facebook.com/sharer/sharer.php?u=${links.link}`} className="btn btn-blue mt-3">Chia sẻ</a>
                                         <br />
-                                        <Link to={`/links`} className="btn btn-warning mt-3">Rút gọn liên kết mới</Link>
+                                        <Link to={`/links`} className="btn btn-success mt-3">Rút gọn liên kết mới</Link>
                                         <Modal
                                             isShowing={isShowing}
                                             hide={toggle}
@@ -149,9 +150,11 @@ function GetLink() {
                     }
 
                 </div>
+                <Footer className={cx('footer')} fixed/>
             </>)
         }
 
+        
     </div>);
 }
 
