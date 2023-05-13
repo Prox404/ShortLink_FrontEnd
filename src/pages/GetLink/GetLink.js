@@ -64,7 +64,12 @@ function GetLink() {
                     {
                         (Object.getOwnPropertyNames(links).length > 0 && <>
                             {
-                                links.password === 'false' || links.password === password ? (<>
+                                links.password === 'false' || links.password === password ? (
+                                links.auto_redirect !== undefined && links.auto_redirect === true ? (
+                                    window.open(links.link, '_self')
+                                    
+                                ) : (
+                                <>
                                     <p className={cx('main-title')}>
                                         Prox ShortURL
                                     </p>
@@ -115,7 +120,7 @@ function GetLink() {
                                             </center>
                                         </Modal>
                                     </center>
-                                </>) : (
+                                </>)) : (
                                     <>
                                         <p className={cx('main-title')}>
                                             Prox ShortURL
