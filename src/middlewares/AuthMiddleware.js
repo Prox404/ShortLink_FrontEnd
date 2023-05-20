@@ -5,8 +5,8 @@ function AuthMiddleware() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const token = localStorage.getItem('token');
-        if (!token) {
+        const accessToken = localStorage.getItem('accessToken');
+        if (!accessToken) {
             navigate('/login');
         }
     }, [navigate]);

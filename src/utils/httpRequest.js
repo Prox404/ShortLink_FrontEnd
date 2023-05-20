@@ -27,10 +27,10 @@ export const del = async (path, options = {}) => {
 };
 
 httpRequest.interceptors.request.use(function (config) {
-    const token =
-        "Bearer " + localStorage.getItem("token") ?? "";
-    if (token) {
-        config.headers.Authorization = token;
+    const accessToken =
+        "Bearer " + localStorage.getItem("accessToken") ?? "";
+    if (accessToken) {
+        config.headers.Authorization = accessToken;
     }
     return config;
 });

@@ -29,7 +29,8 @@ function Login() {
         const res = await UserServices.login(params);
         if (res) {
             console.log(res);
-            localStorage.setItem('token', res.token);
+            localStorage.setItem('accessToken', res.accessToken);
+            localStorage.setItem('refreshToken', res.refreshToken);
             localStorage.setItem('user', JSON.stringify(res.data));
             toast.success('Login successfully');
             setTimeout(() => {
