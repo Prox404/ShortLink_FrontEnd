@@ -26,7 +26,7 @@ const FacebookWithLogin = () => {
 
         if (res) {
             console.log(res);
-            localStorage.setItem('token', res.token);
+            localStorage.setItem('accessToken', res.accessToken);
             localStorage.setItem('user', JSON.stringify(res.data));
             window.location.reload();
             toast.success('Login successfully');
